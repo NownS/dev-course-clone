@@ -4,6 +4,7 @@ import com.example.gccoffee.model.Email;
 import com.example.gccoffee.model.Order;
 import com.example.gccoffee.service.OrderService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,7 +17,7 @@ public class OrderRestController {
     }
 
     @PostMapping("/api/v1/orders")
-    public Order createOrder(CreateOrderRequest orderRequest){
+    public Order createOrder(@RequestBody CreateOrderRequest orderRequest){
         return orderService.createOrder(
             new Email(orderRequest.email()),
             orderRequest.address(),
